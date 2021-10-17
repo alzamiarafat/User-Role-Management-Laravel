@@ -1,17 +1,14 @@
 <template>
   <div>
-      <Navbar></Navbar>
-      <Footer></Footer>
+      <Login></Login>
   </div>
 </template>
 
 <script>
-import Navbar from './HeaderComponent';
-import Footer from './FooterComponent';
+import Login from './LoginComponent';
 export default {
   components: {
-    Navbar,
-    Footer
+    Login
   }
 }
 </script>
