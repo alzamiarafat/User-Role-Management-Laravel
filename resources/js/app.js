@@ -1,5 +1,6 @@
 require('./bootstrap');
 
+
 import HomeComponent from './components/HomeComponent.vue';
 import NavbarComponent from './components/HeaderComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';

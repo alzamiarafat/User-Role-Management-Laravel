@@ -12,10 +12,10 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'device_name' => 'required',
         ]);
     
         $user = User::where('email', $request->email)->first();

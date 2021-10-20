@@ -2455,6 +2455,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2502,8 +2504,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'Login'
+  name: 'Login',
+  data: function data() {
+    return {
+      formData: {
+        email: '',
+        password: '',
+        device_name: 'browser'
+      },
+      errors: {
+        emailError: '',
+        passwordError: ''
+      }
+    };
+  },
+  methods: {
+    login: function login() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/login', this.formData).then(function (response) {})["catch"](function (errors) {
+        if (errors.response.data.errors.email) {
+          _this.errors.emailError = errors.response.data.errors.email[0];
+        }
+
+        if (errors.response.data.errors.password) {
+          _this.errors.passwordError = errors.response.data.errors.password[0];
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -39130,163 +39163,191 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { staticClass: "vh-100 gradient-custom" }, [
+    _c("div", { staticClass: "container py-5 h-100" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "row d-flex justify-content-center align-items-center h-100"
+        },
+        [
+          _c("div", { staticClass: "col-12 col-md-8 col-lg-6 col-xl-5" }, [
+            _c(
+              "div",
+              {
+                staticClass: "card text-black",
+                staticStyle: { "border-radius": "1rem" }
+              },
+              [
+                _c("div", { staticClass: "card-body p-5 text-center" }, [
+                  _c("div", { staticClass: "mb-md-5 mt-md-4 pb-5" }, [
+                    _c("h2", { staticClass: "fw-bold mb-2 text-uppercase" }, [
+                      _vm._v("Login")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-white-50 mb-5" }, [
+                      _vm._v("Please enter your login and password!")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-outline form-white mb-4" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "typeEmailX" }
+                        },
+                        [_vm._v("Email")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.email,
+                            expression: "formData.email"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: {
+                          type: "email",
+                          id: "typeEmailX",
+                          name: "email"
+                        },
+                        domProps: { value: _vm.formData.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.formData, "email", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", {
+                        staticClass: "text-danger",
+                        domProps: { textContent: _vm._s(_vm.errors.emailError) }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-outline form-white mb-4" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "typePasswordX" }
+                        },
+                        [_vm._v("Password")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.password,
+                            expression: "formData.password"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: {
+                          type: "password",
+                          id: "typePasswordX",
+                          name: "password"
+                        },
+                        domProps: { value: _vm.formData.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "password",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", {
+                        staticClass: "text-danger",
+                        domProps: {
+                          textContent: _vm._s(_vm.errors.passwordError)
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline btn-lg px-5",
+                        on: { click: _vm.login }
+                      },
+                      [_vm._v("Login")]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ])
+              ]
+            )
+          ])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "vh-100 gradient-custom" }, [
-      _c("div", { staticClass: "container py-5 h-100" }, [
+    return _c("p", { staticClass: "small mb-5 pb-lg-2" }, [
+      _c("a", { staticClass: "text-white-50", attrs: { href: "#!" } }, [
+        _vm._v("Forgot password?")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "d-flex justify-content-center text-center mt-4 pt-1" },
+      [
+        _c("a", { staticClass: "text-white", attrs: { href: "#!" } }, [
+          _c("i", { staticClass: "fab fa-facebook-f fa-lg" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "text-white", attrs: { href: "#!" } }, [
+          _c("i", { staticClass: "fab fa-twitter fa-lg mx-4 px-2" })
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "text-white", attrs: { href: "#!" } }, [
+          _c("i", { staticClass: "fab fa-google fa-lg" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "mb-0" }, [
+        _vm._v("Don't have an account? "),
         _c(
-          "div",
-          {
-            staticClass:
-              "row d-flex justify-content-center align-items-center h-100"
-          },
-          [
-            _c("div", { staticClass: "col-12 col-md-8 col-lg-6 col-xl-5" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "card bg-dark text-white",
-                  staticStyle: { "border-radius": "1rem" }
-                },
-                [
-                  _c("div", { staticClass: "card-body p-5 text-center" }, [
-                    _c("div", { staticClass: "mb-md-5 mt-md-4 pb-5" }, [
-                      _c("h2", { staticClass: "fw-bold mb-2 text-uppercase" }, [
-                        _vm._v("Login")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "text-white-50 mb-5" }, [
-                        _vm._v("Please enter your login and password!")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-outline form-white mb-4" },
-                        [
-                          _c("input", {
-                            staticClass: "form-control form-control-lg",
-                            attrs: { type: "email", id: "typeEmailX" }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "typeEmailX" }
-                            },
-                            [_vm._v("Email")]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-outline form-white mb-4" },
-                        [
-                          _c("input", {
-                            staticClass: "form-control form-control-lg",
-                            attrs: { type: "password", id: "typePasswordX" }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "typePasswordX" }
-                            },
-                            [_vm._v("Password")]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "small mb-5 pb-lg-2" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "text-white-50",
-                            attrs: { href: "#!" }
-                          },
-                          [_vm._v("Forgot password?")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-outline-light btn-lg px-5",
-                          attrs: { type: "submit" }
-                        },
-                        [_vm._v("Login")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "d-flex justify-content-center text-center mt-4 pt-1"
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-white",
-                              attrs: { href: "#!" }
-                            },
-                            [
-                              _c("i", {
-                                staticClass: "fab fa-facebook-f fa-lg"
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-white",
-                              attrs: { href: "#!" }
-                            },
-                            [
-                              _c("i", {
-                                staticClass: "fab fa-twitter fa-lg mx-4 px-2"
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-white",
-                              attrs: { href: "#!" }
-                            },
-                            [_c("i", { staticClass: "fab fa-google fa-lg" })]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c("p", { staticClass: "mb-0" }, [
-                        _vm._v("Don't have an account? "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "text-white-50 fw-bold",
-                            attrs: { href: "#!" }
-                          },
-                          [_vm._v("Sign Up")]
-                        )
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ]
+          "a",
+          { staticClass: "text-white-50 fw-bold", attrs: { href: "#!" } },
+          [_vm._v("Sign Up")]
         )
       ])
     ])
